@@ -13,9 +13,12 @@ public class Player_Control : MonoBehaviour
 
     public GameObject gegner;
 
+    public Transform Player;
+
     private void Start()
     {
         gegner = GameObject.FindGameObjectWithTag("Gegner");
+        Player = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     void Update()
@@ -24,22 +27,23 @@ public class Player_Control : MonoBehaviour
         {
             if (Input.GetKey(KeyCode.W))
             {
-                transform.position += Vector3.up * Speed;
+                Player.position += Vector3.up * Speed;
             }
             if (Input.GetKey(KeyCode.S))
             {
-                transform.position += Vector3.down * Speed;
+                Player.position += Vector3.down * Speed;
             }
 
-            transform.position = new Vector3(transform.position.x,Mathf.Clamp(transform.position.y,minY,maxY), transform.position.z);
+            Player.position = new Vector3(Player.position.x,Mathf.Clamp(Player.position.y,minY,maxY), Player.position.z);
 
-            view.RPC("SendPos", RpcTarget.All, transform.position.x, transform.position.y, view.ViewID);
+            view.RPC("SendPos", RpcTarget.All, Player.position.x, Player.position.y, view.ViewID);
         }
     }
 
     [PunRPC]
     void SendPos(float x, float y,int id)
     {
+        Debug.Log(view.ViewID + " | " + id);
         if (view.ViewID != id)
         {
             gegner.transform.transform.position = new Vector3(x, y, 0);
