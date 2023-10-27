@@ -36,18 +36,14 @@ public class Player_Control : MonoBehaviour
 
             Player.position = new Vector3(Player.position.x,Mathf.Clamp(Player.position.y,minY,maxY), Player.position.z);
 
-            view.RPC("SendPos", RpcTarget.All, Player.position.x, Player.position.y, view.ViewID);
+            view.RPC("SendPos", RpcTarget.Others, Player.position.x, Player.position.y);
         }
     }
 
     [PunRPC]
-    void SendPos(float x, float y,int id)
+    void SendPos(float x, float y)
     {
-        Debug.Log(view.ViewID + " | " + id);
-        if (view.ViewID != id)
-        {
             gegner.transform.transform.position = new Vector3(x, y, 0);
-        }
     }
 
 }
