@@ -128,7 +128,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Jeldrik2_0: 967453037616841168
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
