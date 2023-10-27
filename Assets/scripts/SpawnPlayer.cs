@@ -8,6 +8,6 @@ public class SpawnPlayer : MonoBehaviour
     public GameObject Player;
     void Start()
     {
-        PhotonNetwork.Instantiate(Player.name,Vector3.zero, Quaternion.identity);
+        PhotonNetwork.Instantiate(Player.name,transform.position, Player.transform.rotation);
     }
 }

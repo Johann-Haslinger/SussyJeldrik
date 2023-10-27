@@ -67,6 +67,9 @@ LightmapSettings:
     m_LightmapParameters: {fileID: 0}
     m_LightmapsBakeMode: 1
     m_TextureCompression: 1
+    m_FinalGather: 0
+    m_FinalGatherFiltering: 1
+    m_FinalGatherRayCount: 256
     m_ReflectionCompression: 2
     m_MixedBakeMode: 2
     m_BakeBackend: 1
@@ -240,7 +243,7 @@ Transform:
   m_GameObject: {fileID: 232506062}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -7, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -272,7 +275,7 @@ GameObject:
   - component: {fileID: 255024604}
   - component: {fileID: 255024603}
   m_Layer: 0
-  m_Name: Sphere (1)
+  m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -378,7 +381,7 @@ GameObject:
   - component: {fileID: 752092121}
   m_Layer: 0
   m_Name: Gegner
-  m_TagString: Untagged
+  m_TagString: Gegner
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -463,7 +466,7 @@ Transform:
   m_GameObject: {fileID: 752092120}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.67673856, z: -0, w: 0.7362234}
-  m_LocalPosition: {x: 7, y: 0.35, z: 0}
+  m_LocalPosition: {x: 7, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
