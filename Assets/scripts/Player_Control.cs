@@ -11,6 +11,13 @@ public class Player_Control : MonoBehaviour
 
     public float maxY, minY;
 
+    public GameObject gegner;
+
+    private void Start()
+    {
+        gegner = GameObject.FindGameObjectWithTag("Gegner");
+    }
+
     void Update()
     {
         if (view.IsMine)
@@ -35,7 +42,7 @@ public class Player_Control : MonoBehaviour
     {
         if (view.IsMine)
         {
-            transform.position = new Vector3(x, y, 0);
+            gegner.transform.transform.position = new Vector3(x, y, 0);
         }
     }
 
