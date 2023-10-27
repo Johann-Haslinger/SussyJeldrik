@@ -58,6 +58,13 @@ public class Player_Control : MonoBehaviour
 
             view.RPC("SendPos", RpcTarget.Others, -Player.position.x, Player.position.y);
 
+
+            if(Vector3.Distance(Player.position, bulletGegner.transform.position) <= 0.5)
+            {
+                Debug.Log("Exit");
+                Application.CancelQuit();
+            }
+
         }
     }
 

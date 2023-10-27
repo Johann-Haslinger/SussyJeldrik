@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class ExitGame : MonoBehaviour
 {
-    [System.Obsolete]
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
         if (other.CompareTag("BulletGegner"))
         {

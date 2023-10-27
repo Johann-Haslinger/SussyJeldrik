@@ -18,7 +18,7 @@ public class CreateAndJoin : MonoBehaviourPunCallbacks
 
     public override void OnJoinedLobby()
     {
-        RoomOptions roomOptions = new RoomOptions {MaxPlayers=20,IsOpen = true,IsVisible = true };
+        RoomOptions roomOptions = new RoomOptions {MaxPlayers=2,IsOpen = true,IsVisible = true };
         PhotonNetwork.JoinOrCreateRoom("Raum1", roomOptions, TypedLobby.Default);
     }
 
