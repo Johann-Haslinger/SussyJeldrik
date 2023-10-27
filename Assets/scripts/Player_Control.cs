@@ -9,6 +9,8 @@ public class Player_Control : MonoBehaviour
 
     public PhotonView view;
 
+    public float maxY, minY;
+
     void Update()
     {
         if (view.IsMine)
@@ -17,18 +19,24 @@ public class Player_Control : MonoBehaviour
             {
                 transform.position += Vector3.up * Speed;
             }
-            if (Input.GetKey(KeyCode.A))
-            {
-                transform.position += Vector3.left * Speed;
-            }
-            if (Input.GetKey(KeyCode.D))
-            {
-                transform.position += Vector3.right * Speed;
-            }
             if (Input.GetKey(KeyCode.S))
             {
                 transform.position += Vector3.down * Speed;
             }
+
+            transform.position = new Vector3(transform.position.x,Mathf.Clamp(transform.position.y,minY,maxY), transform.position.z);
+
+            view.RPC("SendPos", RpcTarget.All, transform.position.x, transform.position.y);
         }
     }
+
+    [PunRPC]
+    void SendPos(float x, float y)
+    {
+        if (view.IsMine)
+        {
+            transform.position = new Vector3(x, y, 0);
+        }
+    }
+
 }
