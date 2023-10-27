@@ -54,9 +54,10 @@ public class Player_Control : MonoBehaviour
             }
 
             bullet.transform.Translate(Vector3.forward * Time.deltaTime * bulletSpeed);
+            view.RPC("SendBullPos", RpcTarget.Others, -bullet.transform.position.x, bullet.transform.position.y);
 
             view.RPC("SendPos", RpcTarget.Others, Player.position.x, Player.position.y);
-            view.RPC("SendBullPos", RpcTarget.Others, -bullet.transform.position.x, bullet.transform.position.y);
+
         }
     }
 
