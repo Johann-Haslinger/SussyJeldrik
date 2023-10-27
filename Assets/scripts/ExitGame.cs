@@ -8,6 +8,11 @@ public class ExitGame : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("BulletGegner"))
+        {
+            Debug.Log("Exit");
             Application.CancelQuit();
+
+
+        }
     }
 }
