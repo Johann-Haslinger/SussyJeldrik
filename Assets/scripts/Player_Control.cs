@@ -56,7 +56,7 @@ public class Player_Control : MonoBehaviour
             bullet.transform.Translate(Vector3.forward * Time.deltaTime * bulletSpeed);
             view.RPC("SendBullPos", RpcTarget.Others, -bullet.transform.position.x, bullet.transform.position.y);
 
-            view.RPC("SendPos", RpcTarget.Others, Player.position.x, Player.position.y);
+            view.RPC("SendPos", RpcTarget.Others, -Player.position.x, Player.position.y);
 
         }
     }
@@ -64,13 +64,15 @@ public class Player_Control : MonoBehaviour
     [PunRPC]
     void SendPos(float x, float y)
     {
-        gegner.transform.transform.position = new Vector3(-7, y, 0);
+        if(gegner!= null)
+        gegner.transform.transform.position = new Vector3(x, y, 0);
 
     }
         [PunRPC]
         void SendBullPos(float x, float y)
         {
-        bulletGegner.transform.transform.position = new Vector3(x, y, 0);
+        if (bulletGegner != null)
+            bulletGegner.transform.transform.position = new Vector3(x, y, 0);
         }
 
     }
