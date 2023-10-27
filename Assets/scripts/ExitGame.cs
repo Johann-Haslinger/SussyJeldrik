@@ -5,9 +5,9 @@ using UnityEngine;
 public class ExitGame : MonoBehaviour
 {
     [System.Obsolete]
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        if (collision.collider.CompareTag("BulletGegner")) 
+        if (other.CompareTag("BulletGegner"))
             Application.CancelQuit();
     }
 }
