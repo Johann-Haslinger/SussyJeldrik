@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class Player_Control : MonoBehaviour
 {
@@ -62,7 +63,8 @@ public class Player_Control : MonoBehaviour
             if(Vector3.Distance(Player.position, bulletGegner.transform.position) <= 0.5)
             {
                 Debug.Log("Exit");
-                Application.CancelQuit();
+                view.RPC("SendWin", RpcTarget.Others);
+                SceneManager.LoadScene("Lose");
             }
 
         }
@@ -75,11 +77,18 @@ public class Player_Control : MonoBehaviour
         gegner.transform.transform.position = new Vector3(x, y, 0);
 
     }
-        [PunRPC]
-        void SendBullPos(float x, float y)
-        {
+    [PunRPC]
+    void SendBullPos(float x, float y)
+    {
         if (bulletGegner != null)
             bulletGegner.transform.transform.position = new Vector3(x, y, 0);
-        }
+
+    }
+
+        [PunRPC]
+        void SendWin()
+        {
+        SceneManager.LoadScene("Win");
+    }
 
     }
